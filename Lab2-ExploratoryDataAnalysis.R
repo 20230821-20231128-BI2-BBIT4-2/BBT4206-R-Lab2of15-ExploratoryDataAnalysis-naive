@@ -60,7 +60,7 @@ renv::init()
 # renv::install() and renv::update()
 
 # You can also clean up a project by removing unused packages using the
-# following command: renv::clean()
+# following command: renv::clean() 
 
 # After you have confirmed that your code works as expected, use
 # renv::snapshot() to record the packages and their
