@@ -58,7 +58,7 @@ renv::init()
 # packages, using either:
 # install.packages() and update.packages or
 # renv::install() and renv::update()
-
+lapply(.libPaths(), list.files)
 # You can also clean up a project by removing unused packages using the
 # following command: renv::clean()
 
