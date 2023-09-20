@@ -72,6 +72,7 @@ lapply(.libPaths(), list.files)
 
 # Execute the following code to reinstall the specific package versions
 # recorded in the lockfile:
+
 renv::restore()
 
 # One of the packages required to use R in VS Code is the "languageserver"
