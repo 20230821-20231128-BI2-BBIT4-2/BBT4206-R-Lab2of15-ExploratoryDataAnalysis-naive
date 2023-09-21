@@ -93,6 +93,7 @@ library(readxl)
 StudentPerformanceDataset <- read_excel("data/StudentPerformanceDataset.xlsx")
 View(StudentPerformanceDataset)
 
+
 # The following code (optional) can be used to name the attributes in the
 # iris_dataset:
 
@@ -104,16 +105,8 @@ if (!is.element("readr", installed.packages()[, 1])) {
 }
 require("readr")
 
-crop_dataset <- read_csv(
-  "data/crop.data.csv",
-  col_types = cols(
-    density = col_factor(levels = c("1", "2")),
-    block = col_factor(levels = c("1", "2", "3", "4")),
-    fertilizer = col_factor(levels = c("1", "2", "3")),
-    yield = col_double()
-  )
-)
-View(crop_dataset)
+
+
 
 ## STEP 4. Load sample datasets that are provided as part of a package ----
 if (!is.element("mlbench", installed.packages()[, 1])) {
@@ -132,7 +125,7 @@ data("BostonHousing")
 
 dim(BostonHousing)
 dim(crop_dataset)
-dim(iris_dataset)
+dim(StudentPerformanceDataset)
 dim(PimaIndiansDiabetes)
 
 # Data Types ----
@@ -144,7 +137,7 @@ dim(PimaIndiansDiabetes)
 # data types:
 sapply(BostonHousing, class)
 sapply(crop_dataset, class)
-sapply(iris_dataset, class)
+sapply(StudentPerformanceDataset, class)
 sapply(PimaIndiansDiabetes, class)
 
 # Descriptive Statistics ----
@@ -207,7 +200,7 @@ crop_dataset_fertilizer_freq <- crop_dataset$fertilizer
 cbind(frequency = table(crop_dataset_fertilizer_freq),
       percentage = prop.table(table(crop_dataset_fertilizer_freq)) * 100)
 
-iris_dataset_freq <- iris_dataset$V5
+StudentPerformance_Dataset_freq <- iris_dataset$V5
 cbind(frequency = table(iris_dataset_freq),
       percentage = prop.table(table(iris_dataset_freq)) * 100)
 
