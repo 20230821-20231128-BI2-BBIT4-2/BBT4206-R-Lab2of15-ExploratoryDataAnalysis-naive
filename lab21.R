@@ -1,4 +1,4 @@
-# *****************************************************************************
+# ***************************************************************************
 # Lab 2: Exploratory Data Analysis ----
 #
 # Course Code: BBT4206
@@ -14,7 +14,7 @@
 #
 # License: GNU GPL-3.0-or-later
 # See LICENSE file for licensing information.
-# *****************************************************************************
+# ***************************************************************************
 
 # STEP 1. Install and use renv ----
 # **Initialization: Install and use renv ----
@@ -114,8 +114,7 @@ if (!is.element("mlbench", installed.packages()[, 1])) {
 }
 require("mlbench")
 
-data("PimaIndiansDiabetes")
-data("BostonHousing")
+
 
 # Dimensions ----
 ## STEP 5. Preview the Loaded Datasets ----
@@ -123,10 +122,9 @@ data("BostonHousing")
 # attributes/variables/features (columns). Execute the following commands to
 # display the dimensions of your datasets:
 
-dim(BostonHousing)
-dim(crop_dataset)
+
 dim(StudentPerformanceDataset)
-dim(PimaIndiansDiabetes)
+
 
 # Data Types ----
 ## STEP 6. Identify the Data Types ----
@@ -135,10 +133,9 @@ dim(PimaIndiansDiabetes)
 # to identify the need to convert from categorical data (factors) to integers
 # or vice versa where necessary. Execute the following command to identify the
 # data types:
-sapply(BostonHousing, class)
-sapply(crop_dataset, class)
+
 sapply(StudentPerformanceDataset, class)
-sapply(PimaIndiansDiabetes, class)
+
 
 # Descriptive Statistics ----
 
@@ -184,63 +181,46 @@ sapply(PimaIndiansDiabetes, class)
 # It is more sensible to count categorical variables (factors or dimensions)
 # than numeric variables, e.g., counting the number of male and female
 # participants instead of counting the frequency of each participant’s height.
-boston_housing_freq <- BostonHousing$chas
-cbind(frequency = table(boston_housing_freq),
-      percentage = prop.table(table(boston_housing_freq)) * 100)
+StudentPerformanceDataset_dataset_freq <- StudentPerformanceDataset$goal_oriented
+cbind(frequency = table(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset_dataset_freq),
+      percentage = prop.table(table(StudentPerformanceDataset_dataset_freq)) * 100)
 
-crop_dataset_density_freq <- crop_dataset$density
-cbind(frequency = table(crop_dataset_density_freq),
-      percentage = prop.table(table(crop_dataset_density_freq)) * 100)
+StudentPerformanceDataset_dataset_freq <- StudentPerformanceDataset$internet
+cbind(frequency = table(StudentPerformanceDataset_dataset_freq),
+      percentage = prop.table(table(StudentPerformanceDataset_dataset_freq)) * 100)
 
-crop_dataset_block_freq <- crop_dataset$block
-cbind(frequency = table(crop_dataset_block_freq),
-      percentage = prop.table(table(crop_dataset_block_freq)) * 100)
 
-crop_dataset_fertilizer_freq <- crop_dataset$fertilizer
-cbind(frequency = table(crop_dataset_fertilizer_freq),
-      percentage = prop.table(table(crop_dataset_fertilizer_freq)) * 100)
-
-StudentPerformance_Dataset_freq <- iris_dataset$V5
-cbind(frequency = table(iris_dataset_freq),
-      percentage = prop.table(table(iris_dataset_freq)) * 100)
-
-pima_indians_diabetes_freq <- PimaIndiansDiabetes$diabetes
-cbind(frequency = table(pima_indians_diabetes_freq),
-      percentage = prop.table(table(pima_indians_diabetes_freq)) * 100)
+StudentPerformanceDataset_dataset_freq <- StudentPerformanceDataset$mentor
+cbind(frequency = table(StudentPerformanceDataset_dataset_freq),
+      percentage = prop.table(table(StudentPerformanceDataset_dataset_freq)) * 100)
 
 ## Measures of Central Tendency ----
 ### STEP 8. Calculate the mode ----
 # Unfortunately, R does not have an in-built function for calculating the mode.
 # We, therefore, must manually create a function that can calculate the mode.
 
-boston_housing_chas_mode <- names(table(BostonHousing$chas))[
-  which(table(BostonHousing$chas) == max(table(BostonHousing$chas)))
-]
-print(boston_housing_chas_mode)
 
-crop_dataset_fertilizer_mode <- names(table(crop_dataset$fertilizer))[
-  which(table(crop_dataset$fertilizer) == max(table(crop_dataset$fertilizer)))
+StudentPerformanceDataset_goaloriented_mode<-names(table(StudentPerformanceDataset$goal_oriented))[
+  which(table(StudentPerformanceDataset$goal_oriented)==max(table(StudentPerformanceDataset$goal_oriented)))
 ]
-print(crop_dataset_fertilizer_mode)
+print(StudentPerformanceDataset_goaloriented_mode)
+StudentPerformanceDataset_internet_mode<-names(table(StudentPerformanceDataset$internet))[
+  which(table(StudentPerformanceDataset$internet)==max(table(StudentPerformanceDataset$internet)))
+]
+print(StudentPerformanceDataset_internet_mode)
+StudentPerformanceDataset_mentor_mode<-names(table(StudentPerformanceDataset$mentor))[
+  which(table(StudentPerformanceDataset$mentor)==max(table(StudentPerformanceDataset$mentor)))
+]
+print(StudentPerformanceDataset_mentor_mode)
 
-iris_dataset_mode <- names(table(iris_dataset$V5))[
-  which(table(iris_dataset$V5) == max(table(iris_dataset$V5)))
-]
-print(iris_dataset_mode)
 
-pima_indians_diabetes_mode <- names(table(PimaIndiansDiabetes$diabetes))[
-  which(table(PimaIndiansDiabetes$diabetes) ==
-          max(table(PimaIndiansDiabetes$diabetes)))
-]
-print(pima_indians_diabetes_mode)
 
 ## Measures of Distribution/Dispersion/Spread/Scatter/Variability ----
 
 ### STEP 9. Measure the distribution of the data for each variable ----
-summary(BostonHousing)
-summary(crop_dataset)
-summary(iris_dataset)
-summary(PimaIndiansDiabetes)
+
+summary(StudentPerformanceDataset)
+
 
 ### STEP 10. Measure the standard deviation of each variable ----
 # Measuring the variability in the dataset is important because the amount of
@@ -261,20 +241,16 @@ summary(PimaIndiansDiabetes)
 # leaving out the columns termed as “factors” (categorical) or those that have
 # a string data type.
 
-sapply(BostonHousing[, -4], sd)
-sapply(BostonHousing[, c(1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)], sd)
+
+sapply(StudentPerformanceDataset[, c(18,36,48)], sd)
+
 
 # The data type of "yield" should be double (not numeric) so that it can be
 # calculated.
-sapply(crop_dataset[, 4], sd)
-sapply(iris_dataset[, 1:4], sd)
-sapply(PimaIndiansDiabetes[, 1:8], sd)
+
 
 ### STEP 11. Measure the variance of each variable ----
-sapply(BostonHousing[, -4], var)
-sapply(crop_dataset[, 4], var)
-sapply(iris_dataset[, 1:4], var)
-sapply(PimaIndiansDiabetes[, 1:8], var)
+sapply(StudentPerformanceDataset[, c(18,36,48)], var)
 
 ### STEP 12. Measure the kurtosis of each variable ----
 # The Kurtosis informs you of how often outliers occur in the results.
@@ -293,11 +269,8 @@ if (!is.element("e1071", installed.packages()[, 1])) {
   install.packages("e1071", dependencies = TRUE)
 }
 require("e1071")
+sapply(StudentPerformanceDataset[, c(18,36,48)], kurtosis,type=2)
 
-sapply(BostonHousing[, -4],  kurtosis, type = 2)
-sapply(crop_dataset[, 4],  kurtosis, type = 2)
-sapply(iris_dataset[, 1:4],  kurtosis, type = 2)
-sapply(PimaIndiansDiabetes[, 1:8],  kurtosis, type = 2)
 
 ### STEP 13. Measure the skewness of each variable ----
 
@@ -310,11 +283,8 @@ sapply(PimaIndiansDiabetes[, 1:8],  kurtosis, type = 2)
 # it is a normal distribution.
 # 2.	Skewness above 0.4 implies a positive skew; a right-skewed distribution.
 # 3.	Skewness below -0.4 implies a negative skew; a left-skewed distribution.
+sapply(StudentPerformanceDataset[, c(18,36,48)], skewness, type=2)
 
-sapply(BostonHousing[, -4],  skewness, type = 2)
-sapply(crop_dataset[, 4],  skewness, type = 2)
-sapply(iris_dataset[, 1:4],  skewness, type = 2)
-sapply(PimaIndiansDiabetes[, 1:8],  skewness, type = 2)
 
 # Note, executing:
 # skewness(BostonHousing$crim, type=2) # nolint
@@ -331,6 +301,8 @@ sapply(PimaIndiansDiabetes[, 1:8],  skewness, type = 2)
 # only, not categorical values.
 boston_housing_cov <- cov(BostonHousing[, -4])
 View(boston_housing_cov)
+student_performance_cov<-cov(StudentPerformanceDataset[, c(18,36,48)])
+View(student_performance_cov)
 
 crop_dataset_cov <- cov(crop_dataset[, 4])
 View(crop_dataset_cov)
@@ -353,51 +325,6 @@ View(iris_dataset_cor)
 
 pima_indians_diabetes_cor <- cor(PimaIndiansDiabetes[, 1:8])
 View(pima_indians_diabetes_cor)
-
-# Inferential Statistics ----
-# Read the following article:
-#   https://www.scribbr.com/statistics/inferential-statistics/
-# Statistical tests (either for comparison, correlation, or regression) can be
-# used to conduct *hypothesis testing*.
-
-## Parametric versus Non-Parametric Statistical Tests ----
-# If all the 3 points below are true, then
-# use parametric tests, else use non-parametric tests.
-# (i)	  the population that the sample comes from follows a normal distribution
-#       of scores
-# (ii)  the sample size is large enough to represent the population
-# (iii) the variances of each group being compared are similar
-
-## Statistical tests for comparison ----
-# (i)	  t Test: parametric; compares means; uses 2 samples.
-# (ii)	ANOVA: parametric; compares means; can use more than 3 samples.
-# (iii)	Mood’s median: non-parametric; compares medians; can use more than 2
-#       samples.
-# (iv)	Wilcoxon signed-rank: non-parametric; compares distributions; uses 2
-#       samples.
-# (v)	  Wilcoxon rank-sum (Mann-Whitney U): non-parametric; compares sums of
-#       rankings; uses 2 samples.
-# (vi)	Kruskal-Wallis H: non-parametric; compares mean rankings; can use more
-#       than 3 samples.
-
-## Statistical tests for correlation ----
-# (i)	  Pearson’s r: parametric; expects interval/ratio variables.
-# (ii)	Spearman’s r: non-parametric; expects ordinal/interval/ratio variables.
-# (iii)	Chi square test of independence: non-parametric; nominal/ordinal
-#       variables.
-
-## Statistical tests for regression ----
-# (i)	  Simple linear regression: predictor is 1 interval/ratio variable;
-#       outcome is 1 interval/ratio variable.
-# (ii)	Multiple linear regression: predictor can be more than 2 interval/ratio
-#       variables; outcome is 1 interval/ratio variable.
-# (iii)	Logistic regression: predictor is 1 variable (any type); outcome is 1
-#       binary variable.
-# (iv)	Nominal regression: predictor can be more than 1 variable; outcome is 1
-#       nominal variable.
-# (v)	  Ordinal regression: predictor can be more than 1 variable; outcome is 1
-#       ordinal variable.
-
 ## STEP 16. Perform ANOVA on the “crop_dataset” dataset ----
 # ANOVA (Analysis of Variance) is a statistical test used to estimate how a
 # quantitative dependent variable changes according to the levels of one or
