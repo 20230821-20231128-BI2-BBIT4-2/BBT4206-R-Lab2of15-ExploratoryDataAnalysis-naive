@@ -85,18 +85,13 @@ require("languageserver")
 
 # Loading Datasets ----
 ## STEP 2: Download sample datasets ----
-# Create a folder called "data" and store the following 2 files inside the
-# "data" folder:
-## Link 1 (save the file as "iris.data"):
-# https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data
-## Link 2 ("crop.data.csv"):
-# https://cdn.scribbr.com/wp-content/uploads/2020/03/crop.data_.anova_.zip
-# Extract the "crop.data.csv" file into the data folder
+
 
 ## STEP 3. Load the downloaded sample datasets ----
 # Load the datasets
-iris_dataset <- read.csv("data/iris.data", header = FALSE,
-                         stringsAsFactors = TRUE)
+library(readxl)
+X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset <- read_excel("C:/Users/nicky/Downloads/20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset.xlsx")
+View(X20230412_20230719_BI1_BBIT4_1_StudentPerformanceDataset)
 
 # The following code (optional) can be used to name the attributes in the
 # iris_dataset:
@@ -523,7 +518,7 @@ summary(crop_dataset_interactive_two_way_anova)
 # Execute the following to add the “block” variable:
 crop_dataset_interactive_two_way_anova_with_block <- aov(yield ~ # nolint
                                                            fertilizer + density
-                                                           + block,
+                                                         + block,
                                                          data = crop_dataset)
 summary(crop_dataset_interactive_two_way_anova_with_block)
 
