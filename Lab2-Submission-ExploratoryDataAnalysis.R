@@ -299,34 +299,19 @@ sapply(StudentPerformanceDataset[, c(18,8,15)], skewness, type=2)
 ## STEP 14. Measure the covariance between variables ----
 # Note that the covariance and the correlation are computed for numeric values
 # only, not categorical values.
-boston_housing_cov <- cov(BostonHousing[, -4])
-View(boston_housing_cov)
+
 student_performance_cov<-cov(StudentPerformanceDataset[, c(18,8,15)])
 View(student_performance_cov)
 
-crop_dataset_cov <- cov(crop_dataset[, 4])
-View(crop_dataset_cov)
 
-iris_dataset_cov <- cov(iris_dataset[, 1:4])
-View(iris_dataset_cov)
 
-pima_indians_diabetes_cov <- cov(PimaIndiansDiabetes[, 1:8])
-View(pima_indians_diabetes_cov)
+
 
 ## STEP 15. Measure the correlation between variables ----
 student_performance_cor<-cov(StudentPerformanceDataset[, c(18,8,15)])
 View(student_performance_cor)
-boston_housing_cor <- cor(BostonHousing[, -4])
-View(boston_housing_cor)
 
-crop_dataset_cor <- cor(crop_dataset[, 4])
-View(crop_dataset_cor)
 
-iris_dataset_cor <- cor(iris_dataset[, 1:4])
-View(iris_dataset_cor)
-
-pima_indians_diabetes_cor <- cor(PimaIndiansDiabetes[, 1:8])
-View(pima_indians_diabetes_cor)
 
 # Inferential Statistics ----
 # Read the following article:
@@ -405,8 +390,7 @@ View(pima_indians_diabetes_cor)
 # crop yield whereas,
 # Two-Way ANOVA can be used to test the effect of the 3 types of fertilizer and
 # the 2 types of planting density on crop yield.
-crop_dataset_one_way_anova <- aov(yield ~ fertilizer, data = crop_dataset)
-summary(crop_dataset_one_way_anova)
+
 student_performance_one_way_anova <- aov(TOTAL = Coursework TOTAL + EXAM (100%)~ goal_oriented, data = StudentPerformanceDataset)
 summary(student_performance_one_way_anova)
 
@@ -462,8 +446,7 @@ summary(student_performance_two_way_anova)
 # Execute the following to perform a two-way ANOVA with the assumption that
 # fertilizer and density have an interaction effect:
 
-crop_dataset_interactive_two_way_anova <- aov(yield ~ fertilizer * density, # nolint
-                                              data = crop_dataset)
+
 summary(crop_dataset_interactive_two_way_anova)
 student_performance_interactive_two_way_anova <- aov(TOTAL = Coursework TOTAL + EXAM (100%)~ goal_oriented * anticipate_test_questions, data = StudentPerformanceDataset)
 summary(student_performance_one_way_anova)
@@ -487,11 +470,8 @@ summary(student_performance_one_way_anova)
 # and not other variables that are not part of the research.
 
 # Execute the following to add the “block” variable:
-crop_dataset_interactive_two_way_anova_with_block <- aov(yield ~ # nolint
-                                                           fertilizer + density
-                                                         + block,
-                                                         data = crop_dataset)
-summary(crop_dataset_interactive_two_way_anova_with_block)
+
+
 student_performance_interactive_two_way_anova_with_block <- aov(TOTAL = Coursework TOTAL + EXAM (100%)~ goal_oriented + anticipate_test_questions + space_out_revision, data = StudentPerformanceDataset)
 summary(student_performance_interactive_two_way_anova_with_block)
 
@@ -594,10 +574,7 @@ for (i in 18:8) {
 # Execute the following to create a bar plot for the categorical attributes
 # 1 to 3 in the “crop_dataset” dataset:
 
-par(mfrow = c(1, 3))
-for (i in 1:3) {
-  barplot(table(crop_dataset[, i]), main = names(crop_dataset)[i])
-}
+
 
 # The attributes in the “iris_dataset” dataset are:
 # 1.	sepal length in cm
@@ -614,13 +591,7 @@ for (i in 1:3) {
 # Execute the following to create a bar plot for the categorical attribute 5
 # (class) in the “iris_dataset” dataset:
 
-barplot(table(iris_dataset[, 5]), main = names(iris_dataset)[5])
 
-# Execute the following to create a bar plot for attribute number 9
-# (diabetes – “pos” - had diabetes and “neg” - did not have diabetes) in the
-# “PimaIndiansDiabetes” dataset:
-
-barplot(table(PimaIndiansDiabetes[, 9]), main = names(PimaIndiansDiabetes)[9])
 
 ### STEP 20. Create a Missingness Map to Identify Missing Data ----
 # Some machine learning algorithms cannot handle missing data. A missingness
