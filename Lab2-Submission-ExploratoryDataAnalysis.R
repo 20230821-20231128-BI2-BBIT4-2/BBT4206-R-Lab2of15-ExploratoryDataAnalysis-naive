@@ -28,7 +28,7 @@
 
 # Install renv:
 if (!is.element("renv", installed.packages()[, 1])) {
-  install.packages("renv", dependencies = TRUE)
+  install.packages("renv", dependencies = TRUE) 
 }
 require("renv") 
 
