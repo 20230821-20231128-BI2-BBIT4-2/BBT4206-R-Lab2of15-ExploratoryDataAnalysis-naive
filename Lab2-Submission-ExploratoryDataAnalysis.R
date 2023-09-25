@@ -635,9 +635,9 @@ if (!is.element("corrplot", installed.packages()[, 1])) {
   install.packages("corrplot", dependencies = TRUE)
 }
 require("corrplot")
-corrplot(cor(BostonHousing[, -4]), method = "circle")
+
 corrplot(cor(StudentPerformanceDataset[, c(18,8,15)]), method = "circle")
-corrplot(cor(PimaIndiansDiabetes[, 1:8]), method = "circle")
+
 
 # The reason why the “crop_dataset” dataset has no correlation plot is because
 # it does not have at least 2 numeric attributes to compare.
@@ -649,25 +649,14 @@ if (!is.element("ggcorrplot", installed.packages()[, 1])) {
   install.packages("ggcorrplot", dependencies = TRUE)
 }
 require("ggcorrplot")
-ggcorrplot(cor(BostonHousing[, -4]))
-ggcorrplot(cor(iris_dataset[, 1:4]))
-ggcorrplot(cor(PimaIndiansDiabetes[, 1:8]))
+
 
 ### STEP 22. Create a Scatter Plot ----
-pairs(BostonHousing)
-pairs(block ~ ., data = crop_dataset, col = crop_dataset$block)
-pairs(density ~ ., data = crop_dataset, col = crop_dataset$density)
-pairs(fertilizer ~ ., data = crop_dataset, col = crop_dataset$fertilizer)
-pairs(V5 ~ ., data = iris_dataset, col = iris_dataset$V5)
-pairs(diabetes ~ ., data = PimaIndiansDiabetes,
-      col = PimaIndiansDiabetes$diabetes)
+
 
 # Alternatively, the ggcorrplot package can be used to make the plots more
 # appealing:
-ggplot(PimaIndiansDiabetes,
-       aes(x = age, y = pregnant, shape = diabetes, color = diabetes)) +
-  geom_point() +
-  geom_smooth(method = lm)
+
 
 ### STEP 23. Create Multivariate Box and Whisker Plots by Class ----
 # This applies to datasets where the target (dependent) variable is categorical.
@@ -676,9 +665,7 @@ if (!is.element("caret", installed.packages()[, 1])) {
   install.packages("caret", dependencies = TRUE)
 }
 require("caret")
-featurePlot(x = iris_dataset[, 1:4], y = iris_dataset[, 5], plot = "box")
-featurePlot(x = PimaIndiansDiabetes[, 1:8], y = PimaIndiansDiabetes[, 9],
-            plot = "box")
+
 
 # **Deinitialization: Create a snapshot of the R environment ----
 # Lastly, as a follow-up to the initialization step, record the packages
